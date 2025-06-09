@@ -1,0 +1,21 @@
+#This is the global kustomize file
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - db/
+  - nginx/
+  - message-broker/
+
+
+commonLabels:
+  org: bomiriya
+
+namespace: bomiriya
+
+nameSuffix: -suffix
+namePrefix: prefix-
+
+patchesStrategicMerge:
+  - replica-patch/replica-patch.yaml
